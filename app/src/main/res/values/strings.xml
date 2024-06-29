@@ -6,4 +6,9 @@
     <string name="tv_senha">Senha</string>
     <string name="et_hint_e_mail">Digite seu e-mail</string>
     <string name="et_hint_senha">Digite sua senha</string>
+    <string name="tvE_mail">E-mail</string>
+    <string name="etE_mail">Digite seu e-mail</string>
+    <string name="tvSenha">Senha</string>
+    <string name="etSenha">Digite sua senha</string>
+    <string name="btnCriar_conta">Criar conta</string>
 </resources>
