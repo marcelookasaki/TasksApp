@@ -11,4 +11,6 @@
     <string name="tvSenha">Senha</string>
     <string name="etSenha">Digite sua senha</string>
     <string name="btnCriar_conta">Criar conta</string>
+    <string name="tv_mensagem_recuperar_conta">Informe seu e-mail cadastrado para receber \n um link para alteração de senha</string>
+    <string name="btnRecuperar_conta">Enviar</string>
 </resources>
