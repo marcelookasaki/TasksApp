@@ -13,4 +13,7 @@
     <string name="btnCriar_conta">Criar conta</string>
     <string name="tv_mensagem_recuperar_conta">Informe seu e-mail cadastrado para receber \n um link para alteração de senha</string>
     <string name="btnRecuperar_conta">Enviar</string>
+    <string name="btn_login">Login</string>
+    <string name="et_criar_conta">Criar conta</string>
+    <string name="et_recuperar_conta">Recuperar conta</string>
 </resources>
