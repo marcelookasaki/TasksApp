@@ -11,5 +11,10 @@
         <item name="android:statusBarColor">@color/color_default</item>
     </style>
 
+    <style name="CustomTabLayout" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Theme.TasksApp" parent="Base.Theme.TasksApp" />
 </resources>
