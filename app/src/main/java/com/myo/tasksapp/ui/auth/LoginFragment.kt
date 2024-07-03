@@ -29,6 +29,10 @@ class LoginFragment : Fragment() {
     }
 
     private fun initListeners() {
+
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
         binding.etCriarConta.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
