@@ -21,4 +21,12 @@
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
     <string name="tabLayout_abas">Descrição das abas das tarefas</string>
+    <string name="tv_form_task">Descrição</string>
+    <string name="et_form_text">Criar nova tarefa</string>
+    <string name="et_form_task_status">Status</string>
+    <string name="rb_a_fazer">A Fazer</string>
+    <string name="rb_fazendo">Fazendo</string>
+    <string name="rb_feito">Feito</string>
+    <string name="rb_feitas">Feitas</string>
+    <string name="btn_salvar">Salvar</string>
 </resources>
