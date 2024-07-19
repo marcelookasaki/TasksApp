@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentRegisterBinding
-import com.myo.tasksapp.databinding.FragmentSplashBinding
+import com.myo.tasksapp.util.initToolBar
 
 
 class RegisterFragment : Fragment() {
@@ -21,6 +20,12 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolBar(binding.toolBar)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

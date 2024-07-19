@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentRecoverAccountBinding
-import com.myo.tasksapp.databinding.FragmentRegisterBinding
+import com.myo.tasksapp.util.initToolBar
 
 
 class RecoverAccountFragment : Fragment() {
@@ -17,10 +16,16 @@ class RecoverAccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRecoverAccountBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolBar(binding.toolBar)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentFormTaskBinding
-import com.myo.tasksapp.databinding.FragmentHomeBinding
+import com.myo.tasksapp.util.initToolBar
 
 
 class FormTaskFragment : Fragment() {
@@ -20,6 +19,11 @@ class FormTaskFragment : Fragment() {
     ): View {
         _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolBar(binding.toolBar)
     }
 
     override fun onDestroyView() {
