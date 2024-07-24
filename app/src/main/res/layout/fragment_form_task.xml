@@ -76,7 +76,7 @@
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,25 +84,27 @@
 
                 <RadioButton
                     android:id="@+id/rb_todo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
+                    android:checked="false"
                     android:text="@string/rb_a_fazer"
                     android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/rb_doing"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
+                    android:checked="false"
                     android:text="@string/rb_fazendo"
                     android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/rb_done"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
@@ -119,7 +121,6 @@
                 android:textAllCaps="false"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_btn"
-
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +128,7 @@
                 app:backgroundTint="#0526DD"/>
 
             <ProgressBar
+                android:id="@+id/formTaskPB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
