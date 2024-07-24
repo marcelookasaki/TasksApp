@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentRegisterBinding
 import com.myo.tasksapp.util.initToolBar
 
@@ -24,6 +27,29 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolBar(binding.toolBar)
+
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.btnCriarConta.setOnClickListener {
+            validateData()
+        }
+    }
+
+    private fun validateData() {
+        val email = binding.etRegisterEmail.text.toString().trim()
+        val password = binding.etRegisterPassword.text.toString().trim()
+
+        if (email.isNotEmpty()) {
+            if (password.isNotEmpty()) {
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }else {
+                Toast.makeText(requireContext(), "Digite uma senha!", Toast.LENGTH_LONG).show()
+            }
+        }else {
+            Toast.makeText(requireContext(), "Preencha um e-mail válido!", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroyView() {

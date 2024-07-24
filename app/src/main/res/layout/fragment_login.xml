@@ -25,6 +25,7 @@
             android:textColor="@color/white" />
 
         <EditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -40,6 +41,7 @@
             android:textColor="@color/white" />
 
         <EditText
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -86,6 +88,7 @@
         </LinearLayout>
 
         <ProgressBar
+            android:id="@+id/LoginPBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

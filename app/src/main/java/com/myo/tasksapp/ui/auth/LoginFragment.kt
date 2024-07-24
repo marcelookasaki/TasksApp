@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.myo.tasksapp.R
@@ -29,15 +30,29 @@ class LoginFragment : Fragment() {
     }
 
     private fun initListeners() {
-
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            validateData()
         }
         binding.etCriarConta.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
         binding.etRecuperarConta.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
+        }
+    }
+
+    private fun validateData() {
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
+
+        if (email.isNotEmpty()) {
+            if (password.isNotEmpty()) {
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }else {
+                Toast.makeText(requireContext(), "Digite a sua senha!", Toast.LENGTH_LONG).show()
+            }
+        }else {
+            Toast.makeText(requireContext(), "Preencha seu e-mail!", Toast.LENGTH_LONG).show()
         }
     }
 
