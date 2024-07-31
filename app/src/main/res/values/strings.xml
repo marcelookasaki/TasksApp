@@ -1,33 +1,43 @@
 <resources>
     <string name="app_name">TasksApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tv_e_mail">E-mail</string>
-    <string name="tv_senha">Senha</string>
-    <string name="et_hint_e_mail">Digite seu e-mail</string>
-    <string name="et_hint_senha">Digite sua senha</string>
-    <string name="tvE_mail">E-mail</string>
-    <string name="etE_mail">Digite seu e-mail</string>
-    <string name="tvSenha">Senha</string>
-    <string name="etSenha">Digite sua senha</string>
-    <string name="btnCriar_conta">Criar conta</string>
-    <string name="tv_mensagem_recuperar_conta">Informe seu e-mail cadastrado para receber \n um link para alteração de senha</string>
-    <string name="btnRecuperar_conta">Enviar</string>
+    <!-- Generic -->
+    <string name="text_title_warning">Atenção</string>
+    <string name="text_button_warning">Entendi</string>
+    <string name="email_empty">Digite seu e-mail</string>
+    <string name="password_empty">Digite sua senha</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Senha</string>
+
+    <!-- Login Fragment -->
     <string name="btn_login">Login</string>
     <string name="et_criar_conta">Criar conta</string>
     <string name="et_recuperar_conta">Recuperar conta</string>
+
+    <!-- Register Fragment -->
+    <string name="tv_Register_criar_conta">Criar conta</string>
+    <string name="email_empty_register_fragment">Digite um e-mail válido</string>
+    <string name="password_empty_register_fragment">Digite uma senha</string>
+    <string name="btnCriar_conta">Criar conta</string>
+
+    <!-- Recover Account Fragment -->
+    <string name="tv_mensagem_recuperar_conta">Informe seu e-mail cadastrado para receber \n um link para alteração de senha</string>
+    <string name="btnRecuperar_conta">Enviar</string>
+
+    <!-- Form Task Fragment -->
+    <string name="toolBar_title">Nova tarefa</string>
+    <string name="tv_form_task">Descrição</string>
+    <string name="description_empty_form_task">Digite uma nova tarefa!</string>
+    <string name="et_form_text">Criar nova tarefa</string>
+    <string name="et_form_task_status">Status</string>
     <string name="img_btn_description">Logout icon</string>
     <string name="status_task_todo">A Fazer</string>
     <string name="status_task_doing">Fazendo</string>
     <string name="status_task_done">Feitas</string>
     <string name="tabLayout_abas">Descrição das abas das tarefas</string>
-    <string name="tv_form_task">Descrição</string>
-    <string name="et_form_text">Criar nova tarefa</string>
-    <string name="et_form_task_status">Status</string>
     <string name="rb_a_fazer">A Fazer</string>
     <string name="rb_fazendo">Fazendo</string>
     <string name="rb_feito">Feito</string>
     <string name="rb_feitas">Feitas</string>
     <string name="btn_salvar">Salvar</string>
-    <string name="tv_nova_tarefa">Nova tarefa</string>
+
 </resources>

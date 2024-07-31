@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentLoginBinding
+import com.myo.tasksapp.util.showBottomSheet
 
 
 class LoginFragment : Fragment() {
@@ -49,10 +50,10 @@ class LoginFragment : Fragment() {
             if (password.isNotEmpty()) {
                 findNavController().navigate(R.id.action_global_homeFragment)
             }else {
-                Toast.makeText(requireContext(), "Digite a sua senha!", Toast.LENGTH_LONG).show()
+                showBottomSheet(message = R.string.password_empty)
             }
         }else {
-            Toast.makeText(requireContext(), "Preencha seu e-mail!", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = R.string.email_empty)
         }
     }
 

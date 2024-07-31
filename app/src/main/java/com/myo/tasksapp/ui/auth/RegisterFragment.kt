@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentRegisterBinding
 import com.myo.tasksapp.util.initToolBar
+import com.myo.tasksapp.util.showBottomSheet
 
 
 class RegisterFragment : Fragment() {
@@ -45,10 +46,10 @@ class RegisterFragment : Fragment() {
             if (password.isNotEmpty()) {
                 findNavController().navigate(R.id.action_global_homeFragment)
             }else {
-                Toast.makeText(requireContext(), "Digite uma senha!", Toast.LENGTH_LONG).show()
+                showBottomSheet(message = R.string.password_empty_register_fragment)
             }
         }else {
-            Toast.makeText(requireContext(), "Preencha um e-mail válido!", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = R.string.email_empty_register_fragment)
         }
     }
 

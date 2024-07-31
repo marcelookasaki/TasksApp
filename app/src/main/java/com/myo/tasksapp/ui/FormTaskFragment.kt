@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.myo.tasksapp.R
 import com.myo.tasksapp.databinding.FragmentFormTaskBinding
 import com.myo.tasksapp.util.initToolBar
+import com.myo.tasksapp.util.showBottomSheet
 
 
 class FormTaskFragment : Fragment() {
@@ -42,7 +43,7 @@ class FormTaskFragment : Fragment() {
         if (description.isNotEmpty()) {
             Toast.makeText(requireContext(), "OK!", Toast.LENGTH_LONG).show()
         }else {
-            Toast.makeText(requireContext(), "Digite uma nova tarefa!", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = R.string.description_empty_form_task)
         }
     }
 
