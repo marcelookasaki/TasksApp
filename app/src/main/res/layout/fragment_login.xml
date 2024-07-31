@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tv_e_mail"
+            android:text="@string/e_mail"
             android:textColor="@color/white" />
 
         <EditText
@@ -30,14 +30,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edit_text"
-            android:hint="@string/et_hint_e_mail"
+            android:hint="@string/email_empty"
             android:inputType="textEmailAddress"
             android:padding="16dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tv_senha"
+            android:text="@string/password"
             android:textColor="@color/white" />
 
         <EditText
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edit_text"
-            android:hint="@string/et_hint_senha"
+            android:hint="@string/password_empty"
             android:inputType="textPassword"
             android:padding="16dp" />
 
