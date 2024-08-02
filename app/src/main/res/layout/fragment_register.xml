@@ -56,10 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/email_empty_register_fragment"
                 android:inputType="text|textEmailAddress"
-                android:padding="16dp" />
+                style="@style/EditTextTheme" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -73,20 +72,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/password_empty_register_fragment"
                 android:inputType="text|textPassword"
-                android:padding="16dp" />
+                style="@style/EditTextTheme" />
 
             <Button
                 android:id="@+id/btn_criar_conta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:background="@drawable/bg_btn"
                 android:text="@string/btnCriar_conta"
-                android:textColor="@color/white"
-                app:backgroundTint="#0526DD" />
+                style="@style/ButtonTheme" />
 
             <ProgressBar
                 android:id="@+id/RegisterPBar"
