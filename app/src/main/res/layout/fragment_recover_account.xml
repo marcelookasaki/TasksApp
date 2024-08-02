@@ -64,21 +64,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/email_empty"
                 android:inputType="text|textEmailAddress"
-                android:padding="16dp" />
+                style="@style/EditTextTheme" />
 
             <Button
                 android:id="@+id/btn_enviar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
                 android:text="@string/btnRecuperar_conta"
-                android:textColor="@color/white"
-                android:backgroundTint="#0526DD"
-                app:backgroundTint="#0526DD" />
+                style="@style/ButtonTheme"/>
 
         </LinearLayout>
 
