@@ -50,9 +50,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:background="@drawable/bg_btn"
+                android:padding="0dp"
                 android:text="@string/btn_delete"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:backgroundTint="@color/btn_delete"
+                app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
+                app:layout_constraintEnd_toStartOf="@+id/btnEdit"
                 app:layout_constraintStart_toEndOf="@+id/ibPrevious"
                 app:layout_constraintTop_toTopOf="@+id/btnEdit" />
 
@@ -63,26 +66,30 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_btn"
+                android:padding="0dp"
                 android:text="@string/btn_details"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:backgroundTint="@color/btn_color"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnDetails"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btnDelete"
-                app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+                app:layout_constraintEnd_toStartOf="@id/btnDetails"
+                app:layout_constraintStart_toEndOf="@id/btnDelete"
+                app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+                app:layout_constraintHorizontal_bias="0.5"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_btn"
+                android:padding="0dp"
                 android:text="@string/btn_details"
-                android:textSize="12sp"
+                android:textSize="11sp"
                 app:backgroundTint="@color/btn_details"
+                app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
                 app:layout_constraintEnd_toStartOf="@+id/ibNext"
                 app:layout_constraintStart_toEndOf="@+id/btnEdit"
-                app:layout_constraintTop_toTopOf="@+id/btnEdit" />
+                app:layout_constraintTop_toTopOf="@+id/btnEdit"
+                app:layout_constraintHorizontal_bias="0.5"/>
 
             <ImageButton
                 android:id="@+id/ibNext"
