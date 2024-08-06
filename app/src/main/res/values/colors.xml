@@ -2,7 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_default">#03B6FC</color>
-    <color name="btn_color">#0526DD</color>
+    <color name="color_default">#0177A5</color>
+    <color name="btn_color">#015F83</color>
+    <color name="btn_delete">#900F03</color>
+    <color name="btn_details">#024E47</color>
     <color name="transparent">#00000000</color>
 </resources>

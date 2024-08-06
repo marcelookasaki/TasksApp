@@ -50,16 +50,17 @@
 
             <EditText
                 android:id="@+id/et_form_task"
+                style="@style/EditTextTheme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:hint="@string/et_form_text"
                 android:inputType="text"
-                android:layout_marginTop="8dp"
+                android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:ignore="Autofill"
-                style="@style/EditTextTheme" />
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -88,7 +89,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
                     android:checked="false"
-                    android:text="@string/rb_a_fazer"
+                    android:text="@string/status_task_todo"
                     android:textColor="@color/white" />
 
                 <RadioButton
@@ -98,7 +99,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
                     android:checked="false"
-                    android:text="@string/rb_fazendo"
+                    android:text="@string/status_task_doing"
                     android:textColor="@color/white" />
 
                 <RadioButton
@@ -107,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/white"
-                    android:text="@string/rb_feitas"
+                    android:text="@string/status_task_done"
                     android:textColor="@color/white" />
 
             </RadioGroup>
