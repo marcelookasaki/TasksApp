@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myo.tasksapp.R
 import com.myo.tasksapp.data.model.Status
 import com.myo.tasksapp.data.model.Task
-import com.myo.tasksapp.databinding.FragmentDoingBinding
 import com.myo.tasksapp.databinding.FragmentDoneBinding
 import com.myo.tasksapp.ui.adapter.TaskAdapter
 
@@ -32,7 +30,7 @@ class DoneFragment : Fragment() {
         initRecyclerView(getTasks())
     }
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList)
         binding.rvTasksDone.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksDone.setHasFixedSize(true)
         binding.rvTasksDone.adapter = taskAdapter

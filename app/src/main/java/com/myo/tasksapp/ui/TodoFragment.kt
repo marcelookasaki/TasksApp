@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.myo.tasksapp.R
 import com.myo.tasksapp.data.model.Status
 import com.myo.tasksapp.data.model.Task
-import com.myo.tasksapp.databinding.FragmentHomeBinding
 import com.myo.tasksapp.databinding.FragmentTodoBinding
 import com.myo.tasksapp.ui.adapter.TaskAdapter
 
@@ -42,7 +41,7 @@ class TodoFragment : Fragment() {
     }
 
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList)
         binding.rvTasksTodo.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksTodo.setHasFixedSize(true)
         binding.rvTasksTodo.adapter = taskAdapter
