@@ -1,12 +1,18 @@
 package com.myo.tasksapp.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.myo.tasksapp.R
+import com.myo.tasksapp.data.model.Status
 import com.myo.tasksapp.data.model.Task
 import com.myo.tasksapp.databinding.ItemTaskBinding
 
 class TaskAdapter(
+    private val context: Context,
     private val taskList: List<Task>
 ) : RecyclerView.Adapter<TaskAdapter.MyViewHolder>() {
 
@@ -25,7 +31,29 @@ class TaskAdapter(
         val task = taskList[position]
 
         holder.binding.tvDescription.text = task.descriptin
+
+        setIndicator(task, holder)
     }
+
+    private fun setIndicator(task: Task, holder: MyViewHolder) {
+        when(task.status) {
+            Status.TODO -> {
+                holder.binding.ibPrevious.isVisible = false
+            }
+            Status.DOING -> {
+                holder.binding.ibPrevious.setColorFilter(
+                    ContextCompat.getColor(context, R.color.color_status_todo)
+                )
+                holder.binding.ibNext.setColorFilter(
+                    ContextCompat.getColor(context, R.color.color_status_done)
+                )
+            }
+            Status.DONE -> {
+                holder.binding.ibNext.isVisible = false
+            }
+        }
+    }
+
     inner class MyViewHolder(val binding: ItemTaskBinding)
         : RecyclerView.ViewHolder(binding.root)
 }

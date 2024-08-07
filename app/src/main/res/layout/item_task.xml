@@ -36,7 +36,7 @@
             <ImageButton
                 android:id="@+id/ibPrevious"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_back"
                 app:tint="@color/color_default"
@@ -94,7 +94,7 @@
             <ImageButton
                 android:id="@+id/ibNext"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_next"
                 app:tint="@color/color_default"
