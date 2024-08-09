@@ -28,10 +28,11 @@ class DoingFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView(getTasks())
+        initRecyclerView()
+        getTasks()
     }
-    private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList){ task, option ->
+    private fun initRecyclerView() {
+        taskAdapter = TaskAdapter(requireContext()){ task, option ->
             optionSelected(task, option)
         }
         binding.rvTasksDoing.layoutManager = LinearLayoutManager(requireContext())
@@ -78,14 +79,17 @@ class DoingFragment : Fragment() {
             }
         }
     }
-    private fun getTasks() = listOf<Task>(
-        Task("0","Fazendo o curso kotlin", Status.DOING),
-        Task("1","Atualizando os complentos", Status.DOING),
-        Task("2","Ajustando as atividades", Status.DOING),
-        Task("3","Planejamento ajuste do cardápio", Status.DOING),
-        Task("4","Ajustando os planejamentos", Status.DOING),
-        Task("5","Estudando espiritismo", Status.DOING)
-    )
+    private fun getTasks(){
+        val taskList = listOf(
+            Task("0","Fazendo o curso kotlin", Status.DOING),
+            Task("1","Atualizando os complentos", Status.DOING),
+            Task("2","Ajustando as atividades", Status.DOING),
+            Task("3","Planejamento ajuste do cardápio", Status.DOING),
+            Task("4","Ajustando os planejamentos", Status.DOING),
+            Task("5","Estudando espiritismo", Status.DOING)
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
