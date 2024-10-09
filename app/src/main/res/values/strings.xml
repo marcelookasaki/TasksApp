@@ -2,4 +2,11 @@
     <string name="app_name">TasksApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tvE_mail">E-mail</string>
+    <string name="etE_mail">E-mail</string>
+    <string name="tvSenha">Senha</string>
+    <string name="etSenha">Senha</string>
+    <string name="btnlogin">Login</string>
+    <string name="tvCriar_conta">Criar Conta</string>
+    <string name="tvRecuperar_conta">Recuperar Conta</string>
 </resources>
