@@ -10,4 +10,6 @@
     <string name="tvCriar_conta">Criar Conta</string>
     <string name="tvRecuperar_conta">Recuperar Conta</string>
     <string name="btnCriar_conta">Criar Conta</string>
+    <string name="btnRecuperar_conta">Recuperar Conta</string>
+    <string name="tvE_mail_alterar_senha">Alterar Senha</string>
 </resources>
