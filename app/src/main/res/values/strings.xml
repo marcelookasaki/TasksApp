@@ -1,29 +1,30 @@
 <resources>
     <string name="app_name">TasksApp</string>
 
-    <!--    Status Task   -->
+<!--    Status Task   -->
     <string name="status_task_todo">A FAZER</string>
     <string name="status_task_doing">FAZENDO</string>
     <string name="status_task_done">FEITAS</string>
-    <!--    -->
-    <string name="tvE_mail">E-mail</string>
-    <string name="etE_mail">E-mail</string>
-    <string name="tvSenha">Senha</string>
-    <string name="etSenha">Senha</string>
+<!--  Generic  -->
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+<!--  Login Fragment  -->
     <string name="btnlogin">Login</string>
-    <string name="tvCriar_conta">Criar Conta</string>
-    <string name="tvRecuperar_conta">Recuperar Conta</string>
-    <string name="btnCriar_conta">Criar Conta</string>
-    <string name="btnRecuperar_conta">Recuperar Conta</string>
-    <string name="tvE_mail_alterar_senha">Alterar Senha</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<!--  Register Fragment  -->
+    <string name="register">Criar Conta</string>
+<!--  Recover Account Fragment  -->
+    <string name="recover_account">Recuperar Conta</string>
+    <string name="tv_update_password_raf">Alterar senha</string>
+<!-- Form Task Fragment -->
     <string name="tv_descricao_ftf">Descrição</string>
     <string name="et_descriaco_hint_ftf">Criar nova tarefa</string>
     <string name="tv_status_ftf">Status</string>
     <string name="rb_todo">A Fazer\n</string>
     <string name="rb_doing">Fazendo</string>
     <string name="rb_done">Feitas</string>
+<!--    Todo Fragment-->
+    <string name="fab_description_tf">Botão adicionar nova tarefa</string>
+<!--    Form Task Fragment-->
     <string name="btn_salvar_ftf">Salvar</string>
-    <string name="fab_description_tft">Botão adicionar nova tarefa</string>
+    <string name="tv_title_mtb_ftf">Nova tarefa</string>
 </resources>
