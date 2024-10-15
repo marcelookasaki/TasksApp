@@ -7,113 +7,143 @@
     android:layout_height="match_parent"
     tools:context=".ui.FormTaskFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/linearLayout_sv_ftf"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_descricao_ftf"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
-
-        <EditText
-            android:id="@+id/et_descricao_ftf"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_ftf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_edit_text"
-            android:hint="@string/et_descriaco_hint_ftf"
-            android:inputType="text"
-            android:padding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:ignore="Autofill,TextContrastCheck" />
+            android:backgroundTint="@color/color_default">
 
-        <TextView
-            android:id="@+id/tv_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/tv_status_ftf"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_descricao_ftf"
-            tools:ignore="TextContrastCheck" />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/ap_mtb_ftf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back">
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
+                <TextView
+                    android:id="@+id/tv_title_mtb_ftf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_title_mtb_ftf"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"/>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_tft"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_status">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-            <RadioButton
-                android:id="@+id/rb_todo"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_descricao_ftf"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_form_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:buttonTint="@color/white"
-                android:checked="true"
-                android:text="@string/rb_todo"
-                android:textColor="@color/white"
-                tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
+                android:background="@drawable/bg_edit_text"
+                android:hint="@string/et_descriaco_hint_ftf"
+                android:inputType="text"
+                android:padding="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:ignore="Autofill" />
 
-            <RadioButton
-                android:id="@+id/rb_doing"
+            <TextView
+                android:id="@+id/tv_status_ftf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/tv_status_ftf"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_form_task" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:buttonTint="@color/white"
-                android:text="@string/rb_doing"
-                android:textColor="@color/white"
-                tools:ignore="TextContrastCheck" />
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_status_ftf">
 
-            <RadioButton
-                android:id="@+id/rb_done"
+                <RadioButton
+                    android:id="@+id/rb_todo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/white"
+                    android:text="@string/rb_todo"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/rb_doing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/white"
+                    android:text="@string/rb_doing"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/rb_done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/white"
+                    android:text="@string/rb_done"
+                    android:textColor="@color/white" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_salvar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:buttonTint="@color/white"
-                android:text="@string/rb_done"
+                android:text="@string/btn_salvar_ftf"
+                android:textAllCaps="false"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn"
                 android:textColor="@color/white"
-                tools:ignore="TextContrastCheck" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:backgroundTint="#0526DD"/>
 
-        </RadioGroup>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_salvar"
+                tools:visibility="visible"/>
 
-        <Button
-            android:id="@+id/btn_salvar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_salvar_ftf"
-            android:textAllCaps="false"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_btn"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-            app:backgroundTint="#0526DD"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ProgressBar
-            android:id="@+id/pb_ftf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/white"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_salvar"
-            tools:visibility="visible"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
 </ScrollView>

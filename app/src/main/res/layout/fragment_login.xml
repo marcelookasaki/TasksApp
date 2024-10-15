@@ -21,14 +21,14 @@
             android:id="@+id/tv_email_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tvE_mail"
+            android:text="@string/email"
             android:textColor="@color/white"/>
 
         <EditText
             android:id="@+id/et_email_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/etE_mail"
+            android:hint="@string/email"
             android:padding="16dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edit_text"
@@ -39,7 +39,7 @@
             android:id="@+id/tv_password_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tvSenha"
+            android:text="@string/password"
             android:textColor="@color/white"
             android:layout_marginTop="16dp"/>
 
@@ -47,7 +47,7 @@
             android:id="@+id/et_password_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/etSenha"
+            android:hint="@string/password"
             android:padding="16dp"
             android:layout_marginTop="4dp"
             android:inputType="text|textPassword"
@@ -74,7 +74,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tvCriar_conta"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textAlignment="textStart"/>
 
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tvRecuperar_conta"
+                android:text="@string/recover_account"
                 android:textColor="@color/white"
                 android:textAlignment="textEnd"/>
 

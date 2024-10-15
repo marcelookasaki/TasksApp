@@ -10,14 +10,34 @@
     tools:context=".ui.auth.RecoverAccountFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout_sv"
+        android:id="@+id/linearLayout_sv_raf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_raf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_default">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/ab_mtb_raf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back">
+
+                <TextView
+                    android:id="@+id/tv_title_mtb_raf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recover_account"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"/>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout_mt"
@@ -30,10 +50,11 @@
             tools:layout_editor_absoluteY="144dp">
 
             <TextView
+                android:id="@+id/tv_title_update_password_raf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="@string/tvE_mail_alterar_senha"
+                android:text="@string/tv_update_password_raf"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
 
@@ -41,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="@string/tvE_mail"
+                android:text="@string/email"
                 android:textColor="@color/white" />
 
             <EditText
@@ -50,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_edit_text"
-                android:hint="@string/etE_mail"
+                android:hint="@string/email"
                 android:inputType="text|textEmailAddress"
                 android:padding="16dp" />
 
@@ -60,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_btn"
-                android:text="@string/btnRecuperar_conta"
+                android:text="@string/recover_account"
                 android:textColor="@color/white"
                 android:backgroundTint="#0526DD"
                 app:backgroundTint="#0526DD" />

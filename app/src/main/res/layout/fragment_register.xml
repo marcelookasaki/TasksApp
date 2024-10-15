@@ -10,14 +10,34 @@
     tools:context=".ui.auth.RegisterFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout_sv_rf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_rf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color_default"/>
+            android:backgroundTint="@color/color_default">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/ab_mtb_rf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_back">
+
+                <TextView
+                    android:id="@+id/tv_title_mtb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"/>
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -32,7 +52,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tvE_mail"
+                android:text="@string/email"
                 android:textColor="@color/white"
                 android:layout_marginTop="16dp"/>
 
@@ -42,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_edit_text"
-                android:hint="@string/etE_mail"
+                android:hint="@string/email"
                 android:inputType="text|textEmailAddress"
                 android:padding="16dp" />
 
@@ -50,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/tvSenha"
+                android:text="@string/password"
                 android:textColor="@color/white" />
 
             <EditText
@@ -59,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:background="@drawable/bg_edit_text"
-                android:hint="@string/etSenha"
+                android:hint="@string/password"
                 android:inputType="text|textPassword"
                 android:padding="16dp" />
 
@@ -69,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/bg_btn"
-                android:text="@string/btnCriar_conta"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 app:backgroundTint="#0526DD" />
 
