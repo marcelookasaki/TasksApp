@@ -30,10 +30,15 @@ class LoginFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.tvRegister.setOnClickListener {
+
+        binding.btnLoginLf.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
+
+        binding.tvRegisterLf.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        binding.tvRecoverAccount.setOnClickListener {
+        binding.tvRecoverAccountLf.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
     }

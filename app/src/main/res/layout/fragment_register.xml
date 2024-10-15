@@ -37,6 +37,7 @@
                 android:layout_marginTop="16dp"/>
 
             <EditText
+                android:id="@+id/et_email_rf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -53,6 +54,7 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/et_password_rf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -62,6 +64,7 @@
                 android:padding="16dp" />
 
             <Button
+                android:id="@+id/btn_register_rf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -71,6 +74,7 @@
                 app:backgroundTint="#0526DD" />
 
             <ProgressBar
+                android:id="@+id/pb_rf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

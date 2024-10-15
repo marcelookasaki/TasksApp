@@ -10,6 +10,7 @@
     tools:context=".ui.auth.RecoverAccountFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayout_sv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayout_mt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
@@ -44,6 +45,7 @@
                 android:textColor="@color/white" />
 
             <EditText
+                android:id="@+id/et_email_raf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -53,6 +55,7 @@
                 android:padding="16dp" />
 
             <Button
+                android:id="@+id/btn_recover_account_raf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

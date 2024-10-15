@@ -18,14 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_email"
+            android:id="@+id/tv_email_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tvE_mail"
             android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/et_email"
+            android:id="@+id/et_email_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/etE_mail"
@@ -36,7 +36,7 @@
             />
 
         <TextView
-            android:id="@+id/tv_password"
+            android:id="@+id/tv_password_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/tvSenha"
@@ -44,7 +44,7 @@
             android:layout_marginTop="16dp"/>
 
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/et_password_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/etSenha"
@@ -54,7 +54,7 @@
             android:background="@drawable/bg_edit_text" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_login_lf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_btn"
@@ -70,7 +70,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_register"
+                android:id="@+id/tv_register_lf"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -79,7 +79,7 @@
                 android:textAlignment="textStart"/>
 
             <TextView
-                android:id="@+id/tv_recover_account"
+                android:id="@+id/tv_recover_account_lf"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -90,7 +90,7 @@
         </LinearLayout>
 
         <ProgressBar
-            android:id="@+id/progress_bar_lf"
+            android:id="@+id/pb_lf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
