@@ -16,4 +16,14 @@
     <string name="btnCriar_conta">Criar Conta</string>
     <string name="btnRecuperar_conta">Recuperar Conta</string>
     <string name="tvE_mail_alterar_senha">Alterar Senha</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tv_descricao_ftf">Descrição</string>
+    <string name="et_descriaco_hint_ftf">Criar nova tarefa</string>
+    <string name="tv_status_ftf">Status</string>
+    <string name="rb_todo">A Fazer\n</string>
+    <string name="rb_doing">Fazendo</string>
+    <string name="rb_done">Feitas</string>
+    <string name="btn_salvar_ftf">Salvar</string>
+    <string name="fab_description_tft">Botão adicionar nova tarefa</string>
 </resources>
