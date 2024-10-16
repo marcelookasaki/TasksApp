@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentFormTaskBinding
 import com.example.tasksapp.databinding.FragmentHomeBinding
+import com.example.tasksapp.util.initToolBar
 
 
 class FormTaskFragment : Fragment() {
@@ -21,6 +22,11 @@ class FormTaskFragment : Fragment() {
     ): View? {
         _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolBar(binding.apMtbFtf)
     }
 
     override fun onDestroyView() {
