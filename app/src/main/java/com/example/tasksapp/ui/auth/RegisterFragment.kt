@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentRegisterBinding
 import com.example.tasksapp.util.initToolBar
 
@@ -25,6 +28,28 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolBar(binding.abMtbRf)
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.btnRegisterRf.setOnClickListener {
+            validateData()
+        }
+    }
+
+    private fun validateData() {
+        val email = binding.etEmailRf.text.toString().trim()
+        val password = binding.etPasswordRf.text.toString().trim()
+
+        if (email.isNotEmpty()) {
+            if (password.isNotEmpty()) {
+                findNavController().navigate(R.id.action_global_homeFragment)
+            }else {
+                Toast.makeText(requireContext(), "Digite uma senha!", Toast.LENGTH_LONG).show()
+            }
+        }else {
+            Toast.makeText(requireContext(), "Preencha um e-mail válido!", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroyView() {
