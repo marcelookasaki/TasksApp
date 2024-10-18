@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentFormTaskBinding
-import com.example.tasksapp.databinding.FragmentHomeBinding
 import com.example.tasksapp.util.initToolBar
+import com.example.tasksapp.util.showBottomSheet
 
 
 class FormTaskFragment : Fragment() {
@@ -20,7 +20,7 @@ class FormTaskFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFormTaskBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,7 +43,7 @@ class FormTaskFragment : Fragment() {
         if (description.isNotEmpty()) {
             Toast.makeText(requireContext(), "OK!", Toast.LENGTH_LONG).show()
         }else {
-            Toast.makeText(requireContext(), "Digite uma nova tarefa!", Toast.LENGTH_LONG).show()
+            showBottomSheet(message = R.string.description_empty_form_task)
         }
     }
 
