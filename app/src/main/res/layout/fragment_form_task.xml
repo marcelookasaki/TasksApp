@@ -56,15 +56,14 @@
                 android:id="@+id/et_form_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/et_descriaco_hint_ftf"
                 android:inputType="text"
-                android:padding="16dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
-                tools:ignore="Autofill" />
+                tools:ignore="Autofill"
+                style="@style/EditTextTheme" />
 
             <TextView
                 android:id="@+id/tv_status_ftf"
@@ -120,14 +119,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_salvar_ftf"
-                android:textAllCaps="false"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
-                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-                app:backgroundTint="#0526DD"/>
+                style="@style/ButtonTheme"/>
 
             <ProgressBar
                 android:layout_width="wrap_content"
