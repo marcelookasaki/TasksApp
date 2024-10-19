@@ -70,21 +70,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edit_text"
                 android:hint="@string/email"
                 android:inputType="text|textEmailAddress"
-                android:padding="16dp" />
+                style="@style/EditTextTheme"  />
 
             <Button
                 android:id="@+id/btn_recover_account_raf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_btn"
                 android:text="@string/recover_account"
-                android:textColor="@color/white"
-                android:backgroundTint="#0526DD"
-                app:backgroundTint="#0526DD" />
+                style="@style/ButtonTheme"/>
 
             <ProgressBar
                 android:layout_width="wrap_content"
