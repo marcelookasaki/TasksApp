@@ -24,7 +24,7 @@ class TaskAdapter( private val taskList: List<Task>)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val task = taskList[position]
 
-        holder.binding.tvDescription.text = task.descriptin
+        holder.binding.tvDescription.text = task.description
     }
 
     inner class MyViewHolder(val binding: ItemTaskBinding)

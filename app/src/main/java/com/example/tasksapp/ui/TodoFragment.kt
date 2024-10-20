@@ -6,13 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasksapp.R
+import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentTodoBinding
+import com.myo.tasksapp.data.model.Task
+import com.myo.tasksapp.ui.adapter.TaskAdapter
 
 
 class TodoFragment : Fragment() {
+
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
+    private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,8 +30,8 @@ class TodoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initListeners()
+        initRecyclerView(getTasks())
     }
 
     private fun initListeners() {
@@ -33,6 +39,22 @@ class TodoFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_formTaskFragment)
         }
     }
+
+    private fun initRecyclerView(taskList: List<Task>) {
+        taskAdapter = TaskAdapter(taskList)
+        binding.rvTasksTodo.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvTasksTodo.setHasFixedSize(true)
+        binding.rvTasksTodo.adapter = taskAdapter
+    }
+
+    private fun getTasks() = listOf<Task>(
+        Task("0","Passar wap nos banheiros", Status.TODO),
+        Task("1","Fazer os picles", Status.TODO),
+        Task("2","Prender o cano da caixa de água", Status.TODO),
+        Task("3","Fazer lista de alimentos", Status.TODO),
+        Task("4","Atualizar lista de receitas", Status.TODO),
+        Task("5","Ler livro Um compromisso por dia", Status.TODO)
+    )
 
     override fun onDestroyView() {
         super.onDestroyView()
