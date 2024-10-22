@@ -30,14 +30,14 @@ class DoneFragment : Fragment() {
         initRecyclerView(getTasks())
     }
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList)
         binding.rvTasksDone.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksDone.setHasFixedSize(true)
         binding.rvTasksDone.adapter = taskAdapter
     }
     private fun getTasks() = listOf<Task>(
-        Task("0","Estudo o livro dos espíritos", Status.DONE),
-        Task("1","Pedir whey, tmz e creatina", Status.DONE),
+        Task("0","Estudo do livro dos espíritos", Status.DONE),
+        Task("1","Pedir whey, zma e creatina", Status.DONE),
         Task("2","Ajustando as atividades", Status.DONE),
         Task("3","Planejamento ajuste do cardápio", Status.DONE),
         Task("4","Ajustando os planejamentos", Status.DONE),

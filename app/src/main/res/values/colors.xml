@@ -7,4 +7,6 @@
     <color name="btn_color">#0526DD</color>
     <color name="btn_delete">#FF4C3B</color>
     <color name="btn_details">#04D5C1</color>
+    <color name="status_todo">#FF841A</color>
+    <color name="status_done">#024E47</color>
 </resources>

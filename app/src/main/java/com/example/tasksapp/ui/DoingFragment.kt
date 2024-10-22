@@ -30,7 +30,7 @@ class DoingFragment : Fragment() {
         initRecyclerView(getTasks())
     }
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList)
         binding.rvTasksDoing.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksDoing.setHasFixedSize(true)
         binding.rvTasksDoing.adapter = taskAdapter
