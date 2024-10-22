@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentDoingBinding
@@ -30,11 +31,54 @@ class DoingFragment : Fragment() {
         initRecyclerView(getTasks())
     }
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option ->
+            optionSelected(task, option)
+        }
         binding.rvTasksDoing.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksDoing.setHasFixedSize(true)
         binding.rvTasksDoing.adapter = taskAdapter
     }
+
+    private fun optionSelected(task: Task, option: Int) {
+        when(option) {
+            TaskAdapter.SELECT_PREVIOUS-> {
+                Toast.makeText(
+                    requireContext(),
+                    "Previous ${task.description}",
+                    Toast.LENGTH_LONG)
+                    .show()
+            }
+            TaskAdapter.SELECT_REMOVE -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Removendo ${task.description}",
+                    Toast.LENGTH_LONG)
+                    .show()
+            }
+            TaskAdapter.SELECT_EDIT -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Editando ${task.description}",
+                    Toast.LENGTH_LONG)
+                    .show()
+            }
+            TaskAdapter.SELECT_DETAILS -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Detalhes de ${task.description}",
+                    Toast.LENGTH_LONG)
+                    .show()
+            }
+            TaskAdapter.SELECT_NEXT -> {
+                Toast.makeText(
+                    requireContext(),
+                    "Next ${task.description}",
+                    Toast.LENGTH_LONG)
+                    .show()
+            }
+        }
+    }
+
     private fun getTasks() = listOf<Task>(
         Task("0","Fazendo o curso kotlin", Status.DOING),
         Task("1","Atualizando os complentos", Status.DOING),
