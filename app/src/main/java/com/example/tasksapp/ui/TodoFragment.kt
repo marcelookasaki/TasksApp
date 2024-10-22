@@ -41,7 +41,7 @@ class TodoFragment : Fragment() {
     }
 
     private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(taskList)
+        taskAdapter = TaskAdapter(requireContext(), taskList)
         binding.rvTasksTodo.layoutManager = LinearLayoutManager(requireContext())
         binding.rvTasksTodo.setHasFixedSize(true)
         binding.rvTasksTodo.adapter = taskAdapter
