@@ -32,7 +32,8 @@ class TodoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
-        initRecyclerView(getTasks())
+        initRecyclerView()
+        getTasks()
     }
 
     private fun initListeners() {
@@ -41,13 +42,16 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option ->
+    private fun initRecyclerView() {
+        taskAdapter = TaskAdapter(requireContext()) { task, option ->
             optionSelected(task, option)
         }
-        binding.rvTasksTodo.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvTasksTodo.setHasFixedSize(true)
-        binding.rvTasksTodo.adapter = taskAdapter
+
+        with(binding.rvTasksTodo) {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
     private fun optionSelected(task: Task, option: Int) {
@@ -83,14 +87,17 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun getTasks() = listOf<Task>(
-        Task("0","Passar wap nos banheiros", Status.TODO),
-        Task("1","Fazer os picles", Status.TODO),
-        Task("2","Prender o cano da caixa de água", Status.TODO),
-        Task("3","Fazer lista de alimentos", Status.TODO),
-        Task("4","Atualizar lista de receitas", Status.TODO),
-        Task("5","Ler livro Um compromisso por dia", Status.TODO)
-    )
+    private fun getTasks() {
+        val taskList = listOf(
+            Task("0","Passar wap nos banheiros", Status.TODO),
+            Task("1","Fazer os picles", Status.TODO),
+            Task("2","Prender o cano da caixa de água", Status.TODO),
+            Task("3","Fazer lista de alimentos", Status.TODO),
+            Task("4","Atualizar lista de receitas", Status.TODO),
+            Task("5","Ler livro Um compromisso por dia", Status.TODO)
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

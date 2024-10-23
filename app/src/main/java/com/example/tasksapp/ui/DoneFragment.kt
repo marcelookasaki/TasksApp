@@ -28,15 +28,19 @@ class DoneFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView(getTasks())
+        initRecyclerView()
+        getTasks()
     }
-    private fun initRecyclerView(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option ->
+    private fun initRecyclerView() {
+        taskAdapter = TaskAdapter(requireContext()) { task, option ->
             optionSelected(task, option)
         }
-        binding.rvTasksDone.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvTasksDone.setHasFixedSize(true)
-        binding.rvTasksDone.adapter = taskAdapter
+
+        with(binding.rvTasksDone) {
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
     private fun optionSelected(task: Task, option: Int) {
@@ -72,14 +76,17 @@ class DoneFragment : Fragment() {
         }
     }
 
-    private fun getTasks() = listOf<Task>(
-        Task("0","Estudo do livro dos espíritos", Status.DONE),
-        Task("1","Pedir whey, zma e creatina", Status.DONE),
-        Task("2","Ajustando as atividades", Status.DONE),
-        Task("3","Planejamento ajuste do cardápio", Status.DONE),
-        Task("4","Ajustando os planejamentos", Status.DONE),
-        Task("5","Estudando espiritismo", Status.DONE)
-    )
+    private fun getTasks(){
+        val taskList = listOf(
+            Task("0","Estudo do livro dos espíritos", Status.DONE),
+            Task("1","Pedir whey, zma e creatina", Status.DONE),
+            Task("2","Ajustando as atividades", Status.DONE),
+            Task("3","Planejamento ajuste do cardápio", Status.DONE),
+            Task("4","Ajustando os planejamentos", Status.DONE),
+            Task("5","Estudando espiritismo", Status.DONE)
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
