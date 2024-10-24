@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentTodoBinding
 import com.myo.tasksapp.data.model.Task
 import com.myo.tasksapp.ui.adapter.TaskAdapter
+import com.myo.tasksapp.ui.adapter.TaskTopAdapter
 
 
 class TodoFragment : Fragment() {
@@ -20,6 +22,7 @@ class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
+    private lateinit var taskTopAdapter: TaskTopAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,14 +46,19 @@ class TodoFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
+        taskTopAdapter = TaskTopAdapter { task, option ->
+            optionSelected(task, option)
+        }
         taskAdapter = TaskAdapter(requireContext()) { task, option ->
             optionSelected(task, option)
         }
 
+        val concatAdapter = ConcatAdapter(taskTopAdapter, taskAdapter)
+
         with(binding.rvTasksTodo) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
-            adapter = taskAdapter
+            adapter = concatAdapter
         }
     }
 
@@ -88,6 +96,9 @@ class TodoFragment : Fragment() {
     }
 
     private fun getTasks() {
+        val taskTopList = listOf(
+            Task("0","Configurar item task top ", Status.TODO),
+        )
         val taskList = listOf(
             Task("0","Passar wap nos banheiros", Status.TODO),
             Task("1","Fazer os picles", Status.TODO),
@@ -96,6 +107,7 @@ class TodoFragment : Fragment() {
             Task("4","Atualizar lista de receitas", Status.TODO),
             Task("5","Ler livro Um compromisso por dia", Status.TODO)
         )
+        taskTopAdapter.submitList(taskTopList)
         taskAdapter.submitList(taskList)
     }
 
