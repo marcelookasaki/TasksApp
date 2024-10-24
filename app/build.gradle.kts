@@ -63,6 +63,10 @@ dependencies {
     // Feature module support for Fragments
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
 
+    // Recycler View
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
 
