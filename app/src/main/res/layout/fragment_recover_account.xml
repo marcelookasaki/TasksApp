@@ -83,6 +83,7 @@
                 style="@style/ButtonTheme"/>
 
             <ProgressBar
+                android:id="@+id/pb_raf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
