@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentRecoverAccountBinding
@@ -51,16 +50,21 @@ class RecoverAccountFragment : Fragment() {
 
         if (email.isNotEmpty()) {
             binding.pbRaf.isVisible = true
-            Toast.makeText(requireContext(), "OK!", Toast.LENGTH_LONG).show()
+            recoverUserAccount(email)
         }else {
             showBottomSheet(message = getString(R.string.email_empty))
         }
     }
 
     private fun recoverUserAccount(email: String) {
-        auth.sendPasswordResetEmail(email).addOnFailureListener { task ->
-
-        }
+        auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    showBottomSheet(message = getString(R.string.text_message_recover_account))
+                }else{
+                    task.exception?.message?.let { showBottomSheet(message = it) }
+                }
+            }
     }
 
     override fun onDestroyView() {
