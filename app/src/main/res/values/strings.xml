@@ -32,6 +32,10 @@
     <string name="btn_salvar_ftf">Salvar</string>
     <string name="tv_title_mtb_ftf">Nova tarefa</string>
     <string name="description_empty_form_task">Digite uma nova tarefa!</string>
+<!--    Home Fragment-->
+    <string name="text_title_dialog_confirm_logout">Deseja sair da sua conta?</string>
+    <string name="text_btn_dialog_confirm_logout">Confirmar</string>
+    <string name="text_message_dialog_confirm_logout">Pressione em Confirmar para sair da sua conta</string>
 <!--Item RecyclerView-->
     <string name="btn_delete">Remover></string>
     <string name="btn_edit">Editar></string>
