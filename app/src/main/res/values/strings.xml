@@ -12,6 +12,7 @@
     <string name="text_button_warning">Entendi!</string>
     <string name="password_empty">Digite a sua senha!</string>
     <string name="email_empty">Digite o seu e-mail!</string>
+    <string name="generic_error">Ocorreu um erro!</string>
 <!--  Login Fragment  -->
     <string name="btnlogin">Login</string>
 <!--  Register Fragment  -->
@@ -28,6 +29,7 @@
     <string name="rb_todo">A Fazer\n</string>
     <string name="rb_doing">Fazendo</string>
     <string name="rb_done">Feitas</string>
+    <string name="task_saved_success">Tarefa salva com sucesso!</string>
 <!--    Todo Fragment-->
     <string name="fab_description_tf">Botão adicionar nova tarefa</string>
 <!--    Form Task Fragment-->
