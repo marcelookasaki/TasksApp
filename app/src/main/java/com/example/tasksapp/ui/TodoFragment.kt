@@ -31,6 +31,7 @@ class TodoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var taskTopAdapter: TaskTopAdapter
 
