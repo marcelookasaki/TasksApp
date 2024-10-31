@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">TasksApp</string>
 
-<!--    Status Task   -->
+<!-- Status Task   -->
     <string name="status_task_todo">A FAZER</string>
     <string name="status_task_doing">FAZENDO</string>
     <string name="status_task_done">FEITAS</string>
-<!--  Generic  -->
+<!-- Generic  -->
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="text_title_warning">Atenção!</string>
@@ -15,9 +15,9 @@
     <string name="generic_error">Ocorreu um erro!</string>
     <string name="task_list_empty">Nenhuma tarefa cadastrada!</string>
     <string name="task_list_loading">Carregando as tarefas, aguarde!</string>
-<!--  Login Fragment  -->
+<!-- Login Fragment  -->
     <string name="btnlogin">Login</string>
-<!--  Register Fragment  -->
+<!-- Register Fragment  -->
     <string name="register">Criar Conta</string>
 <!--  Recover Account Fragment  -->
     <string name="recover_account">Recuperar Conta</string>
@@ -34,13 +34,13 @@
     <string name="btn_salvar_ftf">Salvar</string>
     <string name="tv_title_mtb_ftf">Nova tarefa</string>
     <string name="description_empty_form_task">Digite uma nova tarefa!</string>
-<!--    Todo Fragment-->
+<!-- Todo Fragment-->
     <string name="fab_description_tf">Botão adicionar nova tarefa</string>
-<!--    Home Fragment-->
+<!-- Home Fragment-->
     <string name="text_title_dialog_confirm_logout">Deseja sair da sua conta?</string>
     <string name="text_btn_dialog_confirm_logout">Confirmar</string>
     <string name="text_message_dialog_confirm_logout">Pressione em Confirmar para sair da sua conta</string>
-<!--Item RecyclerView-->
+<!-- Item RecyclerView-->
     <string name="btn_delete">Remover></string>
     <string name="btn_edit">Editar></string>
     <string name="btn_details">Detalhes></string>

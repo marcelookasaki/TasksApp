@@ -30,6 +30,7 @@ class TodoFragment : Fragment() {
 
     private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var taskTopAdapter: TaskTopAdapter
 
@@ -82,11 +83,14 @@ class TodoFragment : Fragment() {
     private fun optionSelected(task: Task, option: Int) {
         when(option) {
             TaskAdapter.SELECT_REMOVE -> {
-                Toast.makeText(
-                    requireContext(),
-                    "Removendo ${task.description}",
-                    Toast.LENGTH_LONG)
-                    .show()
+                showBottomSheet(
+                    titleDialog = R.string.title_dialog_delete,
+                    message = getString(R.string.message_dialog_delete),
+                    titleButton = R.string.text_btn_dialog_confirm,
+                    onClick = {
+                        deleteTask(task)
+                    }
+                )
             }
             TaskAdapter.SELECT_EDIT -> {
                 Toast.makeText(
