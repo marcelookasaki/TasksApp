@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentTodoBinding
-import com.example.tasksapp.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
@@ -48,6 +47,7 @@ class TodoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         // Initialize Firebase
         reference = Firebase.database.reference
         auth = com.google.firebase.Firebase.auth
@@ -145,36 +145,6 @@ class TodoFragment : Fragment() {
                     ).show()
                 }
             } )
-    }
-
-    private fun deleteTask(task: Task) {
-        reference
-            .child("tasks")
-            .child(auth.currentUser?.uid?: "")
-            .child(task.id)
-            .removeValue().addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.task_delete_success,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    // Armazena a lista atual do adapter
-                    val oldList = taskAdapter.currentList
-
-                    // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
-                    val newList = oldList.toMutableList().apply {
-                        remove(task)
-                    }
-                    taskAdapter.submitList(newList)
-                }else {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.generic_error,Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
     }
 
     private fun listEmpty(taskList: List<Task>) {
