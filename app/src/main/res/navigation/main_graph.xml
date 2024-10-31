@@ -67,7 +67,13 @@
         android:id="@+id/formTaskFragment"
         android:name="com.example.tasksapp.ui.FormTaskFragment"
         android:label="fragment_form_task"
-        tools:layout="@layout/fragment_form_task" />
+        tools:layout="@layout/fragment_form_task" >
+        <argument
+            android:name="task"
+            app:argType="com.myo.tasksapp.data.model.Task"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/doingFragment"
         android:name="com.example.tasksapp.ui.DoingFragment"

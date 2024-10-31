@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentFormTaskBinding
@@ -30,6 +31,8 @@ class FormTaskFragment : Fragment() {
     private var status: Status = Status.TODO
     private var newTask: Boolean = true
 
+    private val args: FormTaskFragmentArgs by navArgs()
+
     private lateinit var reference: DatabaseReference
 
     private lateinit var auth: FirebaseAuth
@@ -50,7 +53,17 @@ class FormTaskFragment : Fragment() {
         // Initialize Firebase Auth
         auth = com.google.firebase.Firebase.auth
 
+        getArgs()
         initListeners()
+    }
+
+    private fun getArgs() {
+        args.task.let {
+            if (it != null) {
+                this.task = it
+                configTask()
+            }
+        }
     }
 
     private fun initListeners() {
@@ -67,22 +80,39 @@ class FormTaskFragment : Fragment() {
         }
     }
 
+    private fun configTask() {
+        newTask = false
+        status = task.status
+        binding.tvTitleMtbFtf.setText(R.string.toolBar_updating_ftf)
+        binding.etFormTask.setText(task.description)
+        setStatus()
+    }
+
+    private fun setStatus() {
+        val id =
+            binding.radioGroup.check(
+                when (task.status) {
+                    Status.TODO -> R.id.rb_todo
+                    Status.DOING -> R.id.rb_doing
+                    else -> R.id.rb_done
+                }
+            )
+    }
+
     private fun validateData() {
         val description = binding.etFormTask.text.toString().trim()
 
         if (description.isNotEmpty()) {
-
             binding.pbFtf.isVisible = true
-
-            if (newTask) task = Task()
-            task.id = reference.database.reference.push().key?:""
+            if (newTask) {
+                task = Task()
+                task.id = reference.database.reference.push().key?:""
+            }
             task.description = description
             task.status = status
-
             saveTask()
-
         }else {
-            showBottomSheet(message = getString(R.string.description_empty_form_task))
+            showBottomSheet(message = getString(R.string.description_empty_form_task_ftf))
         }
     }
 
