@@ -19,6 +19,34 @@
         tools:listitem="@layout/item_task"
         tools:itemCount="3"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_tasks_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81">
+
+        <ProgressBar
+            android:id="@+id/todoFragmentPB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/white" />
+
+        <TextView
+            android:id="@+id/tvTodofragmentTaskList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/task_list_empty"
+            android:textColor="@color/white"
+            tools:text="@string/task_list_loading" />
+
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_tf"
         android:layout_width="wrap_content"

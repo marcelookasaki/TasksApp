@@ -50,7 +50,6 @@ class FormTaskFragment : Fragment() {
         // Initialize Firebase Auth
         auth = com.google.firebase.Firebase.auth
 
-
         initListeners()
     }
 
