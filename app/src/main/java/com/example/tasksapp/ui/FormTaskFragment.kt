@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tasksapp.R
@@ -24,18 +25,17 @@ import com.myo.tasksapp.data.model.Task
 
 class FormTaskFragment : Fragment() {
 
-    private var _binding: FragmentFormTaskBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var task: Task
+    private var _binding: FragmentFormTaskBinding? = null
     private var status: Status = Status.TODO
     private var newTask: Boolean = true
 
-    private val args: FormTaskFragmentArgs by navArgs()
-
+    private lateinit var task: Task
     private lateinit var reference: DatabaseReference
-
     private lateinit var auth: FirebaseAuth
+
+    private val args: FormTaskFragmentArgs by navArgs()
+    private val viewModel: TaskViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,7 +89,7 @@ class FormTaskFragment : Fragment() {
     }
 
     private fun setStatus() {
-        val id =
+        @Suppress("UNUSED_VARIABLE") val id =
             binding.radioGroup.check(
                 when (task.status) {
                     Status.TODO -> R.id.rb_todo
@@ -133,6 +133,7 @@ class FormTaskFragment : Fragment() {
                     if (newTask) {
                         findNavController().popBackStack()
                     }else {
+                        viewModel.setUpdateTask(task)
                         binding.pbFtf.isVisible = false
                     }
                 }else {
