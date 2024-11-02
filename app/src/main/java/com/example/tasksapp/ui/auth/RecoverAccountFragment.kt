@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentRecoverAccountBinding
+import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
@@ -62,7 +63,13 @@ class RecoverAccountFragment : Fragment() {
                 if (task.isSuccessful) {
                     showBottomSheet(message = getString(R.string.text_message_recover_account))
                 }else{
-                    task.exception?.message?.let { showBottomSheet(message = it) }
+                    showBottomSheet(
+                        message = getString(
+                            FirebaseHelper.validError(
+                                task.exception?.message.toString()
+                            )
+                        )
+                    )
                 }
             }
     }
