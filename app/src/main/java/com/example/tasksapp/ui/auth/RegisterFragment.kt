@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentRegisterBinding
+import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
@@ -71,11 +72,11 @@ class RegisterFragment : Fragment() {
                 } else {
                     binding.pbRf .isVisible = false
 
-                    Toast.makeText(
-                        requireContext(),
-                        task.exception?.message,
-                        Toast.LENGTH_SHORT,
-                    ).show()
+                    showBottomSheet(
+                        message = getString(
+                            FirebaseHelper.validError(
+                                task.exception?.message.toString()))
+                    )
                 }
             }
     }

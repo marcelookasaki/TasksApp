@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentLoginBinding
+import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -21,8 +22,6 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var auth: FirebaseAuth
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,10 +32,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Initialize Firebase Auth
-        auth = Firebase.auth
-
         initListeners()
     }
 
@@ -72,14 +67,17 @@ class LoginFragment : Fragment() {
     }
 
     private fun userLogin(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
+        FirebaseHelper.getAuth().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     findNavController().navigate(R.id.action_global_homeFragment)
                 } else {
                     binding.pbLf.isVisible = false
-                    Toast.makeText(requireContext(), task.exception?.message,
-                        Toast.LENGTH_LONG).show()
+                    showBottomSheet(
+                        message = getString(
+                            FirebaseHelper.validError(
+                            task.exception?.message.toString()))
+                    )
                 }
             }
     }

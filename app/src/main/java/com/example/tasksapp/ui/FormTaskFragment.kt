@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentFormTaskBinding
+import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
 import com.google.firebase.auth.FirebaseAuth
@@ -31,8 +32,6 @@ class FormTaskFragment : Fragment() {
     private var newTask: Boolean = true
 
     private lateinit var task: Task
-    private lateinit var reference: DatabaseReference
-    private lateinit var auth: FirebaseAuth
 
     private val args: FormTaskFragmentArgs by navArgs()
     private val viewModel: TaskViewModel by activityViewModels()
@@ -48,11 +47,6 @@ class FormTaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolBar(binding.apMtbFtf)
-        reference = Firebase.database.reference
-
-        // Initialize Firebase Auth
-        auth = com.google.firebase.Firebase.auth
-
         getArgs()
         initListeners()
     }
@@ -103,23 +97,25 @@ class FormTaskFragment : Fragment() {
         val description = binding.etFormTask.text.toString().trim()
 
         if (description.isNotEmpty()) {
+
             binding.pbFtf.isVisible = true
-            if (newTask) {
-                task = Task()
-                task.id = reference.database.reference.push().key?:""
-            }
+
+            if (newTask) task = Task()
+
             task.description = description
             task.status = status
+
             saveTask()
+
         }else {
             showBottomSheet(message = getString(R.string.description_empty_form_task_ftf))
         }
     }
 
     private fun saveTask() {
-        reference
+        FirebaseHelper.getDatabase()
             .child("tasks")
-            .child(auth.currentUser?.uid?:"")
+            .child(FirebaseHelper.getUserID())
             .child(task.id)
             .setValue(task).addOnCompleteListener { result ->
 
