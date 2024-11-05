@@ -131,11 +131,8 @@ class TodoFragment : Fragment() {
                     .show()
             }
             TaskAdapter.SELECT_NEXT -> {
-                Toast.makeText(
-                    requireContext(),
-                    "Next ${task.description}",
-                    Toast.LENGTH_LONG)
-                    .show()
+                task.status = Status.DOING
+                updateTask(task)
             }
         }
     }
@@ -201,8 +198,29 @@ class TodoFragment : Fragment() {
             }
     }
 
+    private fun updateTask(task: Task) {
+        FirebaseHelper.getDatabase()
+            .child("tasks")
+            .child(FirebaseHelper.getUserID())
+            .child(task.id)
+            .setValue(task).addOnCompleteListener { result ->
+                if (result.isSuccessful) {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.task_saved_success,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }else {
+                    Toast.makeText(
+                        requireContext(),
+                        R.string.generic_error,Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+    }
+
     private fun listEmpty(taskList: List<Task>) {
-        binding.tvTodofragmentTaskList.text = if (taskList.isEmpty()) {
+        binding.tvTodoFragmentTaskList.text = if (taskList.isEmpty()) {
             getString(R.string.task_list_empty)
         }else {
             ""
