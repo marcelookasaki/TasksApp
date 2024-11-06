@@ -1,13 +1,13 @@
 package com.example.tasksapp.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentRecoverAccountBinding
+import com.example.tasksapp.ui.BaseFragment
 import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class RecoverAccountFragment : Fragment() {
+class RecoverAccountFragment : BaseFragment() {
 
     private var _binding: FragmentRecoverAccountBinding? = null
     private val binding get() = _binding!!
@@ -50,6 +50,7 @@ class RecoverAccountFragment : Fragment() {
         val email = binding.etEmailRaf.text.toString().trim()
 
         if (email.isNotEmpty()) {
+            hideKeyboard()
             binding.pbRaf.isVisible = true
             recoverUserAccount(email)
         }else {

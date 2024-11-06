@@ -1,7 +1,6 @@
 package com.example.tasksapp.ui.auth
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,12 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.tasksapp.R
 import com.example.tasksapp.databinding.FragmentLoginBinding
+import com.example.tasksapp.ui.BaseFragment
 import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.showBottomSheet
 
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment()  {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -51,6 +51,7 @@ class LoginFragment : Fragment() {
 
         if (email.isNotEmpty()) {
             if (password.isNotEmpty()) {
+                hideKeyboard()
                 binding.pbLf.isVisible = true
 
                 userLogin(email, password)
