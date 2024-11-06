@@ -1,7 +1,6 @@
 package com.example.tasksapp.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,15 +15,10 @@ import com.example.tasksapp.databinding.FragmentFormTaskBinding
 import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.myo.tasksapp.data.model.Task
 
 
-class FormTaskFragment : Fragment() {
+class FormTaskFragment : BaseFragment() {
 
     private val binding get() = _binding!!
     private var _binding: FragmentFormTaskBinding? = null
@@ -97,7 +91,7 @@ class FormTaskFragment : Fragment() {
         val description = binding.etFormTask.text.toString().trim()
 
         if (description.isNotEmpty()) {
-
+            hideKeyboard()
             binding.pbFtf.isVisible = true
 
             if (newTask) task = Task()
