@@ -12,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentFormTaskBinding
-import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.initToolBar
 import com.example.tasksapp.util.showBottomSheet
 import com.myo.tasksapp.data.model.Task
