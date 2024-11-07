@@ -56,6 +56,7 @@ class FormTaskFragment : BaseFragment() {
 
     private fun initListeners() {
         binding.btnSalvar.setOnClickListener {
+            observeViewModel()
             validateData()
         }
 
@@ -65,6 +66,18 @@ class FormTaskFragment : BaseFragment() {
                 R.id.rb_doing -> Status.DOING
                 else -> Status.DONE
             }
+        }
+    }
+
+    private fun observeViewModel() {
+        viewModel.taskInsert.observe(viewLifecycleOwner) {
+            Toast.makeText(
+                requireContext(),
+                R.string.task_saved_success,
+                Toast.LENGTH_LONG
+            ).show()
+
+            findNavController().popBackStack()
         }
     }
 
@@ -91,7 +104,7 @@ class FormTaskFragment : BaseFragment() {
         val description = binding.etFormTask.text.toString().trim()
 
         if (description.isNotEmpty()) {
-            hideKeyboard()
+
             binding.pbFtf.isVisible = true
 
             if (newTask) task = Task()
@@ -99,38 +112,15 @@ class FormTaskFragment : BaseFragment() {
             task.description = description
             task.status = status
 
-            saveTask()
+            if (newTask) {
+                viewModel.insertTask(task)
+            }else {
+                //viewModel.updateTask(task)
+            }
 
         }else {
             showBottomSheet(message = getString(R.string.description_empty_form_task_ftf))
         }
-    }
-
-    private fun saveTask() {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
-
-                if (result.isSuccessful){
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.task_saved_success,
-                        Toast.LENGTH_LONG
-                    ).show()
-
-                    if (newTask) {
-                        findNavController().popBackStack()
-                    }else {
-                        viewModel.setUpdateTask(task)
-                        binding.pbFtf.isVisible = false
-                    }
-                }else {
-                    binding.pbFtf.isVisible = false
-                    showBottomSheet(message = getString(R.string.generic_error))
-                }
-            }
     }
 
     override fun onDestroyView() {
