@@ -60,7 +60,21 @@ class TaskViewModel : ViewModel() {
             }
     }
 
-    fun setUpdateTask(task: Task) {
-        _taskUpdate.value = task
+    fun updateTask(task: Task) {
+        val map = mapOf(
+            "description" to task.description,
+            "status" to task.status
+        )
+
+        FirebaseHelper.getDatabase()
+            .child("tasks")
+            .child(FirebaseHelper.getUserID())
+            .child(task.id)
+            .updateChildren(map).addOnCompleteListener { result ->
+
+                if (result.isSuccessful) {
+                    _taskUpdate.postValue(task)
+                }
+            }
     }
 }
