@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.databinding.FragmentTodoBinding
-import com.example.tasksapp.util.FirebaseHelper
 import com.example.tasksapp.util.showBottomSheet
 import com.myo.tasksapp.data.model.Task
 import com.myo.tasksapp.ui.adapter.TaskAdapter
@@ -62,10 +61,27 @@ class TodoFragment : Fragment() {
 
     private fun observerViewModel() {
         // List
-        viewModel.taskList.observe(viewLifecycleOwner) { taskList ->
-            binding.todoFragmentPB.isVisible = false
-            listEmpty(taskList)
-            taskAdapter.submitList(taskList)
+        viewModel.taskList.observe(viewLifecycleOwner) { stateView ->
+            when(stateView){
+                is StateView.OnLoad -> {
+                    binding.todoFragmentPB.isVisible = true
+                }
+
+                is StateView.OnSuccess -> {
+                    binding.todoFragmentPB.isVisible = false
+                    listEmpty(stateView.data?: emptyList())
+                    taskAdapter.submitList(stateView.data)
+                }
+
+                is StateView.OnError -> {
+                    Toast.makeText(
+                        requireContext(),
+                        stateView.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                    binding.todoFragmentPB.isVisible = false
+                }
+            }
         }
         // Insert
         viewModel.taskInsert.observe(viewLifecycleOwner) { task ->
