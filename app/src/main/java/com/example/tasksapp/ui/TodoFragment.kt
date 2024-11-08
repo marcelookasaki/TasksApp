@@ -61,13 +61,13 @@ class TodoFragment : Fragment() {
     }
 
     private fun observerViewModel() {
-
+        // List
         viewModel.taskList.observe(viewLifecycleOwner) { taskList ->
             binding.todoFragmentPB.isVisible = false
             listEmpty(taskList)
             taskAdapter.submitList(taskList)
         }
-
+        // Insert
         viewModel.taskInsert.observe(viewLifecycleOwner) { task ->
             if (task.status == Status.TODO) {
 
@@ -85,7 +85,7 @@ class TodoFragment : Fragment() {
                 setPositionRecyclerView()
             }
         }
-
+        // Update
         viewModel.taskUpdate.observe(viewLifecycleOwner) { updateTask ->
 
             // Armazena a lista atual do adapter
@@ -109,6 +109,23 @@ class TodoFragment : Fragment() {
             // Atualiza a tarefa pela posição do adapter
             taskAdapter.notifyItemChanged(position)
 
+        }
+        // Delete
+        viewModel.taskDelete.observe(viewLifecycleOwner) { task ->
+            Toast.makeText(
+                requireContext(),
+                R.string.task_delete_success,
+                Toast.LENGTH_LONG
+            ).show()
+
+            // Armazena a lista atual do adapter
+            val oldList = taskAdapter.currentList
+
+            // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
+            val newList = oldList.toMutableList().apply {
+                remove(task)
+            }
+            taskAdapter.submitList(newList)
         }
     }
 
@@ -160,7 +177,7 @@ class TodoFragment : Fragment() {
                     message = getString(R.string.message_dialog_delete),
                     titleButton = R.string.text_btn_dialog_confirm,
                     onClick = {
-                        deleteTask(task)
+                        viewModel.deleteTask(task)
                     }
                 )
             }
@@ -185,35 +202,7 @@ class TodoFragment : Fragment() {
 
 
 
-    private fun deleteTask(task: Task) {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .removeValue().addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.task_delete_success,
-                        Toast.LENGTH_LONG
-                    ).show()
 
-                    // Armazena a lista atual do adapter
-                    val oldList = taskAdapter.currentList
-
-                    // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
-                    val newList = oldList.toMutableList().apply {
-                        remove(task)
-                    }
-                    taskAdapter.submitList(newList)
-                }else {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.generic_error,Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-    }
 
     private fun listEmpty(taskList: List<Task>) {
         binding.tvTodoFragmentTaskList.text = if (taskList.isEmpty()) {
