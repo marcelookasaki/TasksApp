@@ -15,8 +15,8 @@ import com.myo.tasksapp.data.model.Task
 
 class TaskViewModel : ViewModel() {
 
-    private val _taskList = MutableLiveData<List<Task>>()
-    val taskList: LiveData<List<Task>> = _taskList
+    private val _taskList = MutableLiveData<StateView<List<Task>>>()
+    val taskList: LiveData<StateView<List<Task>>> = _taskList
 
     private val _taskInsert = MutableLiveData<Task>()
     val taskInsert: LiveData<Task> = _taskInsert
@@ -28,29 +28,37 @@ class TaskViewModel : ViewModel() {
     val taskDelete: LiveData<Task> = _taskDelete
 
     fun getTasks(status: Status) {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
+        try {
+            _taskList.postValue(StateView.OnLoad())
 
-                    val taskList = mutableListOf<Task>()
+            FirebaseHelper.getDatabase()
+                .child("tasks")
+                .child(FirebaseHelper.getUserID())
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
 
-                    for (ds in snapshot.children) {
-                        val task = ds.getValue(Task::class.java) as Task
-                        if (task.status == status) {
-                            taskList.add(task)
+                        val taskList = mutableListOf<Task>()
+
+                        for (ds in snapshot.children) {
+                            val task = ds.getValue(Task::class.java) as Task
+                            if (task.status == status) {
+                                taskList.add(task)
+                            }
                         }
-                    }
-                    taskList.reverse()
-                    _taskList.postValue(taskList)
-                }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Log.i("INFOTESTE", "onCancelled:")
-                }
-            } )
+                        taskList.reverse()
+                        _taskList.postValue(StateView.OnSuccess(taskList))
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.i("INFOTESTE", "onCancelled:")
+                    }
+                } )
+        } catch (ex: Exception) {
+            _taskList.postValue(StateView.OnError(ex.message.toString()))
+        }
     }
+
 
     fun insertTask(task: Task) {
         FirebaseHelper.getDatabase()
