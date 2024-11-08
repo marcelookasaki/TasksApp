@@ -78,6 +78,14 @@ class FormTaskFragment : BaseFragment() {
 
             findNavController().popBackStack()
         }
+
+        viewModel.taskUpdate.observe(viewLifecycleOwner) {
+            Toast.makeText(
+                requireContext(),
+                R.string.task_updated_success,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     private fun configTask() {
@@ -114,7 +122,7 @@ class FormTaskFragment : BaseFragment() {
             if (newTask) {
                 viewModel.insertTask(task)
             }else {
-                //viewModel.updateTask(task)
+                viewModel.updateTask(task)
             }
 
         }else {

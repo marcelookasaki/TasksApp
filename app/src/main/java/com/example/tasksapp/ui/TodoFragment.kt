@@ -88,25 +88,27 @@ class TodoFragment : Fragment() {
 
         viewModel.taskUpdate.observe(viewLifecycleOwner) { updateTask ->
 
-            if (updateTask.status == Status.TODO) {
+            // Armazena a lista atual do adapter
+            val oldList = taskAdapter.currentList
 
-                // Armazena a lista atual do adapter
-                val oldList = taskAdapter.currentList
-
-                // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
-                val newList = oldList.toMutableList().apply {
+            // Gera uma nova lista a partir da lista antiga já com a tarefa atualizada
+            val newList = oldList.toMutableList().apply {
+                if (updateTask.status == Status.TODO) {
                     find { it.id == updateTask.id }?.description == updateTask.description
+                }else {
+                    remove(updateTask)
                 }
-
-                // Armazena a posição da tarefa a ser atualiza na lista
-                val position = newList.indexOfFirst { it.id == updateTask.id }
-
-                // Envia a lista atualizada para o adapter
-                taskAdapter.submitList(newList)
-
-                // Atualiza a tarefa pela posição do adapter
-                taskAdapter.notifyItemChanged(position)
             }
+
+            // Armazena a posição da tarefa a ser atualiza na lista
+            val position = newList.indexOfFirst { it.id == updateTask.id }
+
+            // Envia a lista atualizada para o adapter
+            taskAdapter.submitList(newList)
+
+            // Atualiza a tarefa pela posição do adapter
+            taskAdapter.notifyItemChanged(position)
+
         }
     }
 
@@ -176,7 +178,7 @@ class TodoFragment : Fragment() {
             }
             TaskAdapter.SELECT_NEXT -> {
                 task.status = Status.DOING
-                updateTask(task)
+                viewModel.updateTask(task)
             }
         }
     }
@@ -204,27 +206,6 @@ class TodoFragment : Fragment() {
                         remove(task)
                     }
                     taskAdapter.submitList(newList)
-                }else {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.generic_error,Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-    }
-
-    private fun updateTask(task: Task) {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    Toast.makeText(
-                        requireContext(),
-                        R.string.task_saved_success,
-                        Toast.LENGTH_LONG
-                    ).show()
                 }else {
                     Toast.makeText(
                         requireContext(),
