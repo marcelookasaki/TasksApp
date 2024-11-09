@@ -1,11 +1,9 @@
 package com.example.tasksapp.ui
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
 import com.example.tasksapp.util.FirebaseHelper
 import com.google.firebase.database.DataSnapshot
@@ -18,16 +16,16 @@ class TaskViewModel : ViewModel() {
     private val _taskList = MutableLiveData<StateView<List<Task>>>()
     val taskList: LiveData<StateView<List<Task>>> = _taskList
 
-    private val _taskInsert = MutableLiveData<Task>()
-    val taskInsert: LiveData<Task> = _taskInsert
+    private val _taskInsert = MutableLiveData<StateView<Task>>()
+    val taskInsert: LiveData<StateView<Task>> = _taskInsert
 
-    private val _taskUpdate = MutableLiveData<Task>()
-    val taskUpdate: LiveData<Task> = _taskUpdate
+    private val _taskUpdate = MutableLiveData<StateView<Task>>()
+    val taskUpdate: LiveData<StateView<Task>> = _taskUpdate
 
-    private val _taskDelete = MutableLiveData<Task>()
-    val taskDelete: LiveData<Task> = _taskDelete
+    private val _taskDelete = MutableLiveData<StateView<Task>>()
+    val taskDelete: LiveData<StateView<Task>> = _taskDelete
 
-    fun getTasks(status: Status) {
+    fun getTasks() {
         try {
             _taskList.postValue(StateView.OnLoad())
 
@@ -41,9 +39,7 @@ class TaskViewModel : ViewModel() {
 
                         for (ds in snapshot.children) {
                             val task = ds.getValue(Task::class.java) as Task
-                            if (task.status == status) {
-                                taskList.add(task)
-                            }
+                            taskList.add(task)
                         }
 
                         taskList.reverse()
@@ -61,45 +57,63 @@ class TaskViewModel : ViewModel() {
 
 
     fun insertTask(task: Task) {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .setValue(task).addOnCompleteListener { result ->
+        try {
+            _taskInsert.postValue(StateView.OnLoad())
 
-                if (result.isSuccessful) {
-                    _taskInsert.postValue(task)
+            FirebaseHelper.getDatabase()
+                .child("tasks")
+                .child(FirebaseHelper.getUserID())
+                .child(task.id)
+                .setValue(task).addOnCompleteListener { result ->
+
+                    if (result.isSuccessful) {
+                        _taskInsert.postValue(StateView.OnSuccess(task))
+                    }
                 }
-            }
+        }catch (ex: Exception) {
+            _taskInsert.postValue(StateView.OnError(ex.message.toString()))
+        }
     }
 
     fun updateTask(task: Task) {
-        val map = mapOf(
-            "description" to task.description,
-            "status" to task.status
-        )
+        try {
+            _taskUpdate.postValue(StateView.OnLoad())
 
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .updateChildren(map).addOnCompleteListener { result ->
+            val map = mapOf(
+                "description" to task.description,
+                "status" to task.status
+            )
 
-                if (result.isSuccessful) {
-                    _taskUpdate.postValue(task)
+            FirebaseHelper.getDatabase()
+                .child("tasks")
+                .child(FirebaseHelper.getUserID())
+                .child(task.id)
+                .updateChildren(map).addOnCompleteListener { result ->
+
+                    if (result.isSuccessful) {
+                        _taskUpdate.postValue(StateView.OnSuccess(task))
+                    }
                 }
-            }
+        }catch (ex: Exception) {
+            _taskUpdate.postValue(StateView.OnError(ex.message.toString()))
+        }
     }
 
     fun deleteTask(task: Task) {
-        FirebaseHelper.getDatabase()
-            .child("tasks")
-            .child(FirebaseHelper.getUserID())
-            .child(task.id)
-            .removeValue().addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-                    _taskDelete.postValue(task)
+        try {
+            _taskDelete.postValue(StateView.OnLoad())
+
+            FirebaseHelper.getDatabase()
+                .child("tasks")
+                .child(FirebaseHelper.getUserID())
+                .child(task.id)
+                .removeValue().addOnCompleteListener { result ->
+                    if (result.isSuccessful) {
+                        _taskDelete.postValue(StateView.OnSuccess(task))
+                    }
                 }
-            }
+        }catch (ex: Exception) {
+            _taskDelete.postValue(StateView.OnError(ex.message.toString()))
+        }
     }
 }
