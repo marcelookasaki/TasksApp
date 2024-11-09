@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("com.google.gms.google-services")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -67,11 +66,6 @@ dependencies {
 
     // Recycler View
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-
-    // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.5.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database-ktx")
 
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
