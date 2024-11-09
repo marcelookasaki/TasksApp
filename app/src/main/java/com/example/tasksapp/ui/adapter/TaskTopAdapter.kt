@@ -49,7 +49,6 @@ class TaskTopAdapter(
         val task = getItem(position)
 
         holder.binding.tvDescription.text = task.description
-
         holder.binding.btnDelete.setOnClickListener { taskTopSelected(task, SELECT_REMOVE) }
         holder.binding.btnEdit.setOnClickListener { taskTopSelected(task, SELECT_EDIT) }
         holder.binding.btnDetails.setOnClickListener { taskTopSelected(task, SELECT_DETAILS) }

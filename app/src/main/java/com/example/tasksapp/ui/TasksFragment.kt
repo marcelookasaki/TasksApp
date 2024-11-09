@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasksapp.R
 import com.example.tasksapp.data.model.Status
-import com.example.tasksapp.databinding.FragmentTodoBinding
+import com.example.tasksapp.databinding.FragmentTasksBinding
 import com.example.tasksapp.util.showBottomSheet
 import com.myo.tasksapp.data.model.Task
 import com.myo.tasksapp.ui.adapter.TaskAdapter
@@ -24,9 +24,9 @@ import com.myo.tasksapp.ui.adapter.TaskTopAdapter
 @Suppress("UnusedEquals", "UnusedEquals", "UnusedEquals", "UnusedEquals", "UnusedEquals",
     "UnusedEquals"
 )
-class TodoFragment : Fragment() {
+class TasksFragment : Fragment() {
 
-    private var _binding: FragmentTodoBinding? = null
+    private var _binding: FragmentTasksBinding? = null
     private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var taskTopAdapter: TaskTopAdapter
@@ -37,7 +37,7 @@ class TodoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTodoBinding.inflate(inflater, container, false)
+        _binding = FragmentTasksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,8 +52,8 @@ class TodoFragment : Fragment() {
 
     private fun initListeners() {
         binding.fabTf.setOnClickListener {
-            val action = HomeFragmentDirections
-                .actionHomeFragmentToFormTaskFragment(null)
+            val action = TasksFragmentDirections
+                .actionTasksFragmentToFormTaskFragment(null)
             findNavController().navigate(action)
         }
         observerViewModel()
@@ -242,7 +242,7 @@ class TodoFragment : Fragment() {
         taskTopAdapter = TaskTopAdapter { task, option ->
             optionSelected(task, option)
         }
-        taskAdapter = TaskAdapter(requireContext()) { task, option ->
+        taskAdapter = TaskAdapter { task, option ->
             optionSelected(task, option)
         }
 
@@ -268,8 +268,8 @@ class TodoFragment : Fragment() {
                 )
             }
             TaskAdapter.SELECT_EDIT -> {
-                val action = HomeFragmentDirections
-                    .actionHomeFragmentToFormTaskFragment(task)
+                val action = TasksFragmentDirections
+                    .actionTasksFragmentToFormTaskFragment(task)
                 findNavController().navigate(action)
             }
             TaskAdapter.SELECT_DETAILS -> {
@@ -278,10 +278,6 @@ class TodoFragment : Fragment() {
                     "Detalhes de ${task.description}",
                     Toast.LENGTH_LONG)
                     .show()
-            }
-            TaskAdapter.SELECT_NEXT -> {
-                task.status = Status.DOING
-                viewModel.updateTask(task)
             }
         }
     }
